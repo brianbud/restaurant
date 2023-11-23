@@ -6,9 +6,21 @@
   font-style: normal;
 }
 
-.hello {
-  color: red;
+body {
+  height: 100vh;
+}
+
+.title {
+  color: white;
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
-  background: url("./images/forest.jpg");
+  /* background: url("./images/forest.jpg"); */
+}
+
+h1 {
+  color: red;
+}
+
+img {
+  background-position: center;
 }
