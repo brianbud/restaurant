@@ -1,4 +1,4 @@
-import _ from "lodash";
+import "./reset.css";
 import "./style.css";
 import BackgroundImg from "./images/forest.jpg";
 import Data from "./data.json";
@@ -9,7 +9,7 @@ function component() {
   const btn = document.createElement("button");
 
   // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(["Hello", "world!!!!!!"], " ");
+  element.innerHTML = `<h1>Hello World</h1>`;
   element.classList.add("hello");
 
   btn.innerHTML = "click me";
