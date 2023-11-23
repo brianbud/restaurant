@@ -2,15 +2,19 @@ import _ from "lodash";
 import "./style.css";
 import BackgroundImg from "./images/forest.jpg";
 import Data from "./data.json";
-
-console.log(Data.menu[1]);
+import printMe from "./print.js";
 
 function component() {
   const element = document.createElement("div");
+  const btn = document.createElement("button");
 
   // Lodash, currently included via a script, is required for this line to work
   element.innerHTML = _.join(["Hello", "world!!!!!!"], " ");
   element.classList.add("hello");
+
+  btn.innerHTML = "click me";
+  btn.onclick = printMe;
+  element.appendChild(btn);
 
   const bgImg = new Image();
   bgImg.src = BackgroundImg;
