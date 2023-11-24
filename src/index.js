@@ -2,6 +2,7 @@ import "./reset.css";
 import "./style.css";
 import BackgroundImg from "./images/forest.jpg";
 import home from "./pages/home.js";
+import menu from "./pages/menu.js";
 import Data from "./data.json";
 import printMe from "./print.js";
 
@@ -38,8 +39,23 @@ function renderContent(parentEl, content) {
   div.innerHTML = content;
   parentEl.appendChild(div);
 }
-
+let body = document.querySelector("body");
 body.appendChild(createheader());
 
-let body = document.querySelector("body");
-renderContent(body, `<h1>Welcome!</h1>`);
+renderContent(body, home());
+let menuLink = getNavLinks();
+
+function getNavLinks() {
+  let menuLink = document.querySelector("nav ul li a[href='#menu']");
+  return menuLink;
+}
+
+menuLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  let contentDiv = document.querySelector("body > div");
+  contentDiv.innerHTML = "";
+  let menuPara = document.createElement("p");
+  menuPara.textContent = "test";
+
+  contentDiv.appendChild(menuPara);
+});
