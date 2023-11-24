@@ -21,7 +21,7 @@ function header() {
   // const bgImg = new Image();
   // bgImg.src = BackgroundImg;
   // content.appendChild(bgImg);
-  return header;
+  document.body.appendChild(header);
 }
 
 function homeContent() {
@@ -37,8 +37,38 @@ function homeContent() {
   </section>
   `;
 
-  return home;
+  document.body.appendChild(home);
 }
 
-document.body.appendChild(header());
-document.body.appendChild(home());
+function menuContent() {
+  let menuContainer = document.createElement("main");
+
+  Data.menu.forEach((item) => {
+    menuContainer.innerHTML += `
+      <div>${item.name}</div>
+    `;
+  });
+
+  document.body.appendChild(menuContainer);
+}
+
+const content = document.querySelector("body");
+content.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    if (e.target.innerText === "Home") {
+      homeContent();
+    } else if (e.target.innerText === "Menu") {
+      document.querySelector("main").innerHTML = "";
+      menuContent();
+    } else if (e.target.innerText === "About Us") {
+      console.log("ypu clicked on About Us");
+    }
+  }
+});
+
+let firstRender = () => {
+  header();
+  homeContent();
+};
+
+firstRender();
