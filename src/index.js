@@ -33,5 +33,13 @@ function createheader() {
   return header;
 }
 
-let body = document.querySelector("body");
+function renderContent(parentEl, content) {
+  let div = document.createElement("div");
+  div.innerHTML = content;
+  parentEl.appendChild(div);
+}
+
 body.appendChild(createheader());
+
+let body = document.querySelector("body");
+renderContent(body, `<h1>Welcome!</h1>`);
