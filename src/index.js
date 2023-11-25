@@ -3,6 +3,8 @@ import "./style.css";
 import BackgroundImg from "./images/forest.jpg";
 import home from "./pages/home.js";
 import menu from "./pages/menu.js";
+import about from "./pages/about.js";
+
 import Data from "./data.json";
 
 function createheader() {
@@ -41,19 +43,29 @@ function renderContent(parentEl, content) {
 let body = document.querySelector("body");
 body.appendChild(createheader());
 
-renderContent(body, home());
-let menuLink = getNavLinks();
+let initialRender = renderContent(body, home());
+initialRender;
 
-function getNavLinks() {
-  let menuLink = document.querySelector("a[href='#menu']");
-  return menuLink;
-}
+//Nav Links Listeners
+let navLinks = document.querySelectorAll("nav a");
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
 
-menuLink.addEventListener("click", (e) => {
-  e.preventDefault();
-  let contentDiv = document.querySelector("body > div");
-  contentDiv.innerHTML = "";
-  let menuPara = document.createElement("p");
+    let pageId = link.getAttribute("href");
+    let contentDiv = document.querySelector("body > div");
+    contentDiv.innerHTML = "";
 
-  renderContent(body, menu());
+    switch (pageId) {
+      case "#home":
+        renderContent(contentDiv, home());
+        break;
+      case "#menu":
+        renderContent(contentDiv, menu());
+        break;
+      case "#about":
+        renderContent(contentDiv, about());
+        break;
+    }
+  });
 });
