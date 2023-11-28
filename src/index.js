@@ -5,8 +5,6 @@ import home from "./pages/home.js";
 import menu from "./pages/menu.js";
 import about from "./pages/about.js";
 
-import Data from "./data.json";
-
 function createheader() {
   let header = document.createElement("header");
 
